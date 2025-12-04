@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 讨论区
+    url: https://github.com/DyroS3/dy_name_tag/discussions
+    about: 有问题或想讨论？请使用讨论区
+  - name: 📖 文档
+    url: https://github.com/DyroS3/dy_name_tag#readme
+    about: 请先查阅 README 文档

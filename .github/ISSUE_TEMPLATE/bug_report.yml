@@ -1,0 +1,92 @@
+name: 🐛 Bug 报告
+description: 报告一个 Bug 帮助我们改进
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你花时间填写这个 Bug 报告！请尽可能详细地描述问题。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug 描述
+      description: 清晰简洁地描述这个 Bug 是什么
+      placeholder: 描述你遇到的问题...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 描述如何复现这个问题
+      placeholder: |
+        1. 进入服务器
+        2. 执行命令 '...'
+        3. 查看 '...'
+        4. 出现错误
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 描述你期望发生什么
+      placeholder: 我期望看到...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 描述实际发生了什么
+      placeholder: 实际发生的是...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 使用的框架
+      description: 你使用的是哪个框架？
+      options:
+        - ESX
+        - QBCore
+        - Standalone
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 资源版本
+      description: dy_name_tag 的版本号
+      placeholder: "v1.0.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误日志
+      description: 如果有错误日志，请粘贴在这里
+      render: shell
+      placeholder: |
+        粘贴服务端或客户端的错误日志...
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: 如果适用，添加截图帮助解释问题
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 其他信息
+      description: 添加任何其他关于问题的信息
