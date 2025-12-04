@@ -1,0 +1,29 @@
+# Temporary files
+*.tmp
+*.temp
+*.log
+*_base64.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives (keep source only)
+*.rar
+*.7z
+
+# Augment
+.augment/
+
+# Build artifacts
+release/
+
+# Development files
+web/docs/

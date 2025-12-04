@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release Archive
+        run: |
+          # 创建发布目录
+          mkdir -p release/dy_name_tag
+          
+          # 复制所需文件
+          cp -r bridge release/dy_name_tag/
+          cp -r client release/dy_name_tag/
+          cp -r server release/dy_name_tag/
+          cp -r shared release/dy_name_tag/
+          cp -r locales release/dy_name_tag/
+          cp -r web release/dy_name_tag/
+          cp -r sql release/dy_name_tag/
+          cp config.lua release/dy_name_tag/
+          cp fxmanifest.lua release/dy_name_tag/
+          cp README.md release/dy_name_tag/
+          cp LICENSE release/dy_name_tag/ 2>/dev/null || true
+          
+          # 创建 zip 包
+          cd release
+          zip -r ../dy_name_tag-${{ github.ref_name }}.zip dy_name_tag
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## dy_name_tag ${{ github.ref_name }}
+            
+            一款功能丰富、高性能的 FiveM 玩家头顶名牌系统
+            
+            ### 安装说明
+            1. 下载 `dy_name_tag-${{ github.ref_name }}.zip`
+            2. 解压到 `resources/` 目录
+            3. 执行 `sql/install.sql` 导入数据库
+            4. 在 `server.cfg` 中添加 `ensure dy_name_tag`
+            
+            ### 依赖
+            - [ox_lib](https://github.com/overextended/ox_lib)
+            - [oxmysql](https://github.com/overextended/oxmysql)
+          files: |
+            dy_name_tag-${{ github.ref_name }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
